@@ -39,11 +39,11 @@ class ProcessMessage {
                 var model = WhatsappModels_1.default.MessageLocation(number);
                 models.push(model);
             }
-            else if (textUser.includes("contacto") || textUser.includes("información") || textUser.includes("comunicarme") || textUser.includes("comunicarce")) {
+            else if (textUser.includes("contacto") || textUser.includes("información") || textUser.includes("comunicarme") || textUser.includes("comunicarce") || textUser.includes("contáctenos")) {
                 var model = WhatsappModels_1.default.MessageContactoText(number);
                 models.push(model);
             }
-            else if (textUser.includes("servicios") || textUser.includes("si") || textUser.includes("plan")) {
+            else if (textUser.includes("servicios") || textUser.includes("si")) {
                 var model2 = WhatsappModels_1.default.MessageList(number);
                 models.push(model2);
             }
