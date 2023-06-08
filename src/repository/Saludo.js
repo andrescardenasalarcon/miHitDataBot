@@ -2,11 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Saludo {
     Bienvenida(word) {
-        let bienvenida;
-        bienvenida = ['hola', 'buenos', 'dias', 'preguntar'];
+        let bienvenida = ['hola', 'buenos', 'dias', 'preguntar'];
+        word = word.toLowerCase();
+        console.log(word);
         if (bienvenida.includes(word)) {
+            console.log("ENTRE");
             return true;
         }
+        console.log("Me sali");
         return false;
     }
     ;

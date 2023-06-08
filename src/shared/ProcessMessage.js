@@ -14,8 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const WhatsappModels_1 = __importDefault(require("./WhatsappModels"));
 const WhatsappService_1 = __importDefault(require("../services/WhatsappService"));
-const Saludo_1 = __importDefault(require("../repository/Saludo"));
-const Info_1 = __importDefault(require("../repository/Info"));
 const Servicio_1 = __importDefault(require("../repository/Servicio"));
 class ProcessMessage {
     Process(textUser, number) {
@@ -23,33 +21,33 @@ class ProcessMessage {
             textUser = textUser.toLowerCase();
             var models = [];
             //#region sin chat gpt
-            if (Saludo_1.default.Bienvenida(textUser)) {
+            if (textUser.includes("hola") || textUser.includes("buenos") || textUser.includes("buenas")) {
                 var model = WhatsappModels_1.default.MessageImageHola(number);
                 models.push(model);
             }
-            else if (Saludo_1.default.Despedida(textUser)) {
+            else if (textUser.includes("adios") || textUser.includes("adiós")) {
                 var model = WhatsappModels_1.default.MessageImageDespedida(number);
                 models.push(model);
             }
-            else if (Saludo_1.default.Gracias(textUser)) {
+            else if (textUser.includes("gracias")) {
                 var model = WhatsappModels_1.default.MessageText("Con Gusto desde HitData ✌️", number);
                 var model2 = WhatsappModels_1.default.MessageText("No olvides visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
                 models.push(model);
                 models.push(model2);
             }
-            else if (Info_1.default.Ubicacion(textUser)) {
+            else if (textUser.includes("conócenos") || textUser.includes("conocenos") || textUser.includes("ubicados")) {
                 var model = WhatsappModels_1.default.MessageLocation(number);
                 models.push(model);
             }
-            else if (Info_1.default.Contacto(textUser)) {
+            else if (textUser.includes("contacto") || textUser.includes("información") || textUser.includes("comunicarme") || textUser.includes("comunicarce")) {
                 var model = WhatsappModels_1.default.MessageContactoText(number);
                 models.push(model);
             }
-            else if (Servicio_1.default.Servcicios(textUser)) {
+            else if (textUser.includes("servicios") || textUser.includes("si") || textUser.includes("plan")) {
                 var model2 = WhatsappModels_1.default.MessageList(number);
                 models.push(model2);
             }
-            else if (Servicio_1.default.Planes(textUser)) {
+            else if (textUser.includes("plan 1") || textUser.includes("plan 2") || textUser.includes("plan 3") || textUser.includes("plan 4") || textUser.includes("plan 5") || textUser.includes("plan 6")) {
                 const plan = Servicio_1.default.ListDePlanes(textUser, number);
                 models.push(plan);
             }
