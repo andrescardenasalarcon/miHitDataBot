@@ -66,12 +66,10 @@ class WhatsappDao {
                 var changes = (entry["changes"])[0];
                 var value = changes["value"];
                 var messageObject = value["messages"];
-                console.log(messageObject);
                 if (typeof messageObject != "undefined") {
                     var message = messageObject[0];
                     var number = message["from"];
                     var text = GetTextUser(message);
-                    console.log(text);
                     if (text != "") {
                         myConsole.log(text);
                         myConsole.log(number);

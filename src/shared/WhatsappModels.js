@@ -69,7 +69,7 @@ class WhatsappModels {
                             type: "reply",
                             reply: {
                                 id: "001",
-                                title: "Contactanos",
+                                title: "Contáctenos",
                             },
                         },
                         {
