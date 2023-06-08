@@ -35,7 +35,11 @@ class ProcessMessage {
                 models.push(model);
                 models.push(model2);
             }
-            else if (textUser.includes("conócenos") || textUser.includes("conocenos") || textUser.includes("ubicados")) {
+            else if (textUser.includes("Conócenos")) {
+                var model2 = WhatsappModels_1.default.MessageText("Visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
+                models.push(model2);
+            }
+            else if (textUser.includes("ubicados") || textUser.includes("ubicado") || textUser.includes("situados") || textUser.includes("hitdata")) {
                 var model = WhatsappModels_1.default.MessageLocation(number);
                 models.push(model);
             }
