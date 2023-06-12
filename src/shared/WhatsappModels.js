@@ -173,12 +173,12 @@ class WhatsappModels {
                                 {
                                     id: "main-agencia",
                                     title: "Contacto 📱",
-                                    description: "Puedes visitar nuestra agencia.",
+                                    description: "Este es nuestro número de contacto",
                                 },
                                 {
                                     id: "main-contacto",
-                                    title: "Conócenos 💻",
-                                    description: "Visita nuestra página web",
+                                    title: "Sitio Web 💻",
+                                    description: "https://www.hitdatasoluciones.com",
                                 },
                                 {
                                     id: "main-location",
