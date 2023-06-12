@@ -2,21 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Info {
     Contacto(word) {
-        let bienvenida;
-        bienvenida = ['contacto', 'información', 'comunicarme', 'comunicarce', 'hablar', 'contactanos',];
-        if (bienvenida.includes(word)) {
-            return true;
-        }
-        return false;
+        const dictionary = ['contacto', 'información', 'comunicarme', 'comunicarce', 'hablar', 'contactanos',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
+    }
+    ;
+    Agendar(word) {
+        const dictionary = ['agendar', 'asesoría', 'asesoria', 'personalizada',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
     }
     ;
     Ubicacion(word) {
-        let ubicacion;
-        ubicacion = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata',];
-        if (ubicacion.includes(word)) {
-            return true;
-        }
-        return false;
+        const dictionary = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
     }
     ;
 }

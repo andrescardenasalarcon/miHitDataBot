@@ -13,39 +13,6 @@ class WhatsappModels {
         });
         return data;
     }
-    MessageContactoText(number) {
-        const data = JSON.stringify({
-            messaging_product: "whatsapp",
-            to: `whatsapp:${number}`,
-            "type": "contacts",
-            "contacts": [
-                {
-                    "name": {
-                        "formatted_name": "HIT DATA",
-                        "first_name": "HIT DATA",
-                    },
-                    "org": {
-                        "company": "3127399230",
-                        "title": "HIT DATA"
-                    },
-                    "phones": [
-                        {
-                            "phone": "3127399230",
-                            "wa_id": "573127399230",
-                            "type": "WORK"
-                        }
-                    ],
-                    "urls": [
-                        {
-                            "url": "https://www.hitdatasoluciones.com",
-                            "type": "Nuestro Web Site"
-                        }
-                    ]
-                }
-            ]
-        });
-        return data;
-    }
     //Buenas tardes, buenos dias, hola
     MessageImageHola(number) {
         const data = JSON.stringify({
@@ -95,6 +62,53 @@ class WhatsappModels {
                 link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/emociones_hitdata(1).jpg",
                 caption: 'Hasta Luego ' + `${number}` + ' desde HitData ✌️✌️ ',
             },
+        });
+        return data;
+    }
+    MessageLocation(number) {
+        const data = JSON.stringify({
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "location",
+            location: {
+                latitude: "5.5441980877891694",
+                longitude: "-73.35154394963322",
+                name: "Hit data Agencia de marketing y publicidad 📍",
+                address: "Centro Comercial Boulevard, Cl. 32 # 3-76, Tunja, Boyacá",
+            },
+        });
+        return data;
+    }
+    MessageContactoText(number) {
+        const data = JSON.stringify({
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            "type": "contacts",
+            "contacts": [
+                {
+                    "name": {
+                        "formatted_name": "HIT DATA",
+                        "first_name": "HIT DATA",
+                    },
+                    "org": {
+                        "company": "3127399230",
+                        "title": "HIT DATA"
+                    },
+                    "phones": [
+                        {
+                            "phone": "3127399230",
+                            "wa_id": "573127399230",
+                            "type": "WORK"
+                        }
+                    ],
+                    "urls": [
+                        {
+                            "url": "https://www.hitdatasoluciones.com",
+                            "type": "Nuestro Web Site"
+                        }
+                    ]
+                }
+            ]
         });
         return data;
     }
@@ -204,14 +218,14 @@ class WhatsappModels {
                             type: "reply",
                             reply: {
                                 id: "001",
-                                title: "Plan Hit Data",
+                                title: "Plan Básico",
                             }
                         },
                         {
                             type: "reply",
                             reply: {
                                 id: "002",
-                                title: "Plan Básico ",
+                                title: "Plan Hit Data",
                             }
                         },
                         {
@@ -292,7 +306,7 @@ class WhatsappModels {
                     "text": "Desarrollo de software."
                 },
                 "footer": {
-                    "text": `Estos son nuestros planes ${number}`
+                    "text": `Desarrollo de software.`
                 },
                 "action": {
                     "buttons": [
@@ -474,20 +488,6 @@ class WhatsappModels {
                     ]
                 }
             }
-        });
-        return data;
-    }
-    MessageLocation(number) {
-        const data = JSON.stringify({
-            messaging_product: "whatsapp",
-            to: `whatsapp:${number}`,
-            type: "location",
-            location: {
-                latitude: "5.5441980877891694",
-                longitude: "-73.35154394963322",
-                name: "Hit data Agencia de marketing y publicidad 📍",
-                address: "Centro Comercial Boulevard, Cl. 32 # 3-76, Tunja, Boyacá",
-            },
         });
         return data;
     }

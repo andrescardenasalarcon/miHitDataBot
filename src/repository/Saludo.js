@@ -2,32 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Saludo {
     Bienvenida(word) {
-        let bienvenida = ['hola', 'buenos', 'dias', 'preguntar'];
-        word = word.toLowerCase();
-        console.log(word);
-        if (bienvenida.includes(word)) {
-            console.log("ENTRE");
-            return true;
-        }
-        console.log("Me sali");
-        return false;
+        const dictionary = ['hola', 'buenos', 'dias', 'preguntar',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
     }
     ;
     Despedida(word) {
-        let bienvenida;
-        bienvenida = ['adios', 'adiós', 'bye', 'me voy',];
-        if (bienvenida.includes(word)) {
-            return true;
-        }
-        return false;
+        let dictionary = ['adios', 'adiós', 'bye', 'me voy',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
     }
     Gracias(word) {
-        let bienvenida;
-        bienvenida = ['gracias', 'thanks',];
-        if (bienvenida.includes(word)) {
-            return true;
-        }
-        return false;
+        let dictionary = ['gracias', 'thanks',];
+        const containsMatch = dictionary.some((dict) => word.includes(dict));
+        return containsMatch;
     }
 }
 const saludo = new Saludo();

@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const WhatsappModels_1 = __importDefault(require("./WhatsappModels"));
 const WhatsappService_1 = __importDefault(require("../services/WhatsappService"));
+const Saludo_1 = __importDefault(require("../repository/Saludo"));
+const Info_1 = __importDefault(require("../repository/Info"));
 const Servicio_1 = __importDefault(require("../repository/Servicio"));
 class ProcessMessage {
     Process(textUser, number) {
@@ -21,45 +23,48 @@ class ProcessMessage {
             textUser = textUser.toLowerCase();
             var models = [];
             //#region sin chat gpt
-            if (textUser.includes("hola") || textUser.includes("buenos") || textUser.includes("buenas")) {
+            if (Saludo_1.default.Bienvenida(textUser)) {
                 var model = WhatsappModels_1.default.MessageImageHola(number);
                 models.push(model);
             }
-            else if (textUser.includes("adios") || textUser.includes("adiós")) {
+            else if (Saludo_1.default.Despedida(textUser)) {
                 var model = WhatsappModels_1.default.MessageImageDespedida(number);
                 models.push(model);
             }
-            else if (textUser.includes("gracias")) {
+            else if (Saludo_1.default.Gracias(textUser)) {
                 var model = WhatsappModels_1.default.MessageText("Con Gusto desde HitData ✌️", number);
                 var model2 = WhatsappModels_1.default.MessageText("No olvides visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
                 models.push(model);
                 models.push(model2);
             }
-            else if (textUser.includes("Conócenos")) {
-                var model2 = WhatsappModels_1.default.MessageText("Visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
-                models.push(model2);
-            }
-            else if (textUser.includes("ubicados") || textUser.includes("ubicado") || textUser.includes("situados") || textUser.includes("hitdata")) {
+            else if (Info_1.default.Ubicacion(textUser)) {
                 var model = WhatsappModels_1.default.MessageLocation(number);
                 models.push(model);
             }
-            else if (textUser.includes("contacto") || textUser.includes("información") || textUser.includes("comunicarme") || textUser.includes("comunicarce") || textUser.includes("contáctenos")) {
+            else if (Info_1.default.Contacto(textUser)) {
                 var model = WhatsappModels_1.default.MessageContactoText(number);
                 models.push(model);
             }
-            else if (textUser.includes("servicios") || textUser.includes("si")) {
+            else if (Info_1.default.Agendar(textUser)) {
+                var model2 = WhatsappModels_1.default.MessageText("Agenda tu cita 📆: https://calendar.app.google/8nfxcDz6z7qRPpdw8", number);
+                models.push(model2);
+            }
+            else if (Servicio_1.default.Servicios(textUser)) {
                 var model2 = WhatsappModels_1.default.MessageList(number);
                 models.push(model2);
             }
-            else if (textUser.includes("plan 1") || textUser.includes("plan 2") || textUser.includes("plan 3") || textUser.includes("plan 4") || textUser.includes("plan 5") || textUser.includes("plan 6")) {
+            else if (Servicio_1.default.Planes(textUser)) {
                 const plan = Servicio_1.default.ListDePlanes(textUser, number);
                 models.push(plan);
             }
+            else if (Servicio_1.default.SubPlanes(textUser)) {
+                const plan = Servicio_1.default.SubPlan(textUser, number);
+                models.push(plan);
+            }
             else {
-                var model = WhatsappModels_1.default.MessageText("Perdona no te entiendemos", number);
+                var model = WhatsappModels_1.default.MessageText("Perdona no te entendimos 🤔", number);
                 models.push(model);
             }
-            //#endregion
             //#region con chat gpt
             // const resultChatGPT = await chatgptService.GetMessagesChatGPT(textUser);
             // if (resultChatGPT != null) {
